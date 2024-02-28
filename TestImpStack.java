@@ -1,7 +1,12 @@
+/**
+ * Universidad del Valle de Guatemala
+ * @author Angie Nadissa Vela López, 23764
+ * @author Juan Marcos Cruz Melara, 23110 
+ * @description pruebas unitarias del programa
+ * @date creación 24/02/2024 última modificación 27/02/2024
+ */
+
 import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.*;
 
 public class TestImpStack {

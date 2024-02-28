@@ -1,11 +1,21 @@
+/**
+ * Universidad del Valle de Guatemala
+ * @author Angie Nadissa Vela López, 23764
+ * @author Juan Marcos Cruz Melara, 23110 
+ * @description interfaz de usuario para utilizar el programa
+ * @date creación 24/02/2024 última modificación 27/02/2024
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
-
-  
+public class Main { 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Seleccione la implementación de la Pila:");
@@ -14,7 +24,7 @@ public class Main {
         System.out.println("3. Simplemente encadenada");
         System.out.println("4. Doblemente encadenada");
         int choice = scanner.nextInt();
-
+        //aplicacion Factory
         switch (choice) {
             case 1:
                 pila = new ArrayListStack<>();
@@ -48,6 +58,11 @@ public class Main {
 
     }
 
+    
+    /** 
+     * @param expresion
+     * @return String
+     */
     public static String convertirInfijoAPosfijo(String expresion) {
         Stack<Character> operadores = new VectorStack<>();
         StringBuilder expresionPosfija = new StringBuilder();
@@ -78,6 +93,11 @@ public class Main {
         return expresionPosfija.toString();
     }
 
+    
+    /** 
+     * @param operador
+     * @return int
+     */
     private static int precedencia(char operador) {
         if (operador == '+' || operador == '-') {
             return 1;

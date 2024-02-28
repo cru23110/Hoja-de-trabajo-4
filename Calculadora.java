@@ -1,5 +1,13 @@
+/**
+ * Universidad del Valle de Guatemala
+ * @author Angie Nadissa Vela López, 23764
+ * @author Juan Marcos Cruz Melara, 23110 
+ * @description calculladora de expresiones postfix
+ * aqui se encuentra el metodo getInstancia para utilizar Singleton
+ * @date creación 24/02/2024 última modificación 27/02/2024
+ */
+
 import java.util.EmptyStackException;
-import java.util.Stack;
 
 public class Calculadora {
     
@@ -7,6 +15,10 @@ public class Calculadora {
     
     private Calculadora() {}
     
+    
+    /** 
+     * @return Calculadora
+     */
     public static Calculadora getInstancia() {
         if (instancia == null) {
             instancia = new Calculadora();
@@ -14,6 +26,11 @@ public class Calculadora {
         return instancia;
     }
 
+    
+    /** 
+     * @param c
+     * @return boolean
+     */
     public static boolean esOperando(String c) {
         boolean flag = true;
         int num = 0;
@@ -26,6 +43,11 @@ public class Calculadora {
         return flag;
     }
 
+    
+    /** 
+     * @param c
+     * @return boolean
+     */
     public static  boolean esOperador(String c) {
         boolean flag = true;
         if (c.equals("+") || c.equals("-") || c.equals("/") || c.equals("*")) {
@@ -36,10 +58,17 @@ public class Calculadora {
         return flag;
     }
     
+    
+    /** 
+     * @param expresionPosfija
+     * @return int
+     */
     public static int evaluarExpresionPosfija(String expresionPosfija) {
         try {
             for (int i = 0; i < expresionPosfija.length(); i++) {
                 char caracter = expresionPosfija.charAt(i);
+                //verificamos si viene un operando u operador para meterlo en la stack
+                //o para operarlo
                 if (Character.isDigit(caracter)) {
                     Main.pila.push(Character.getNumericValue(caracter));
                 } else {
@@ -56,12 +85,14 @@ public class Calculadora {
                             Main.pila.push(operando1 * operando2);
                             break;
                         case '/':
+                            //manejar exception por division entre cero
                             if (operando2 == 0) {
                                 throw new ArithmeticException("División por cero");
                             }
                             Main.pila.push(operando1 / operando2);
                             break;
                         default:
+                            //verificar si ingresa algo que no sea operador esperado
                             throw new IllegalArgumentException("Operador inválido: " + caracter);
                     }
                 }
